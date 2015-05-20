@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">The Movie DB</string>
+
+    <string name="api_key"></string>
+</resources>
