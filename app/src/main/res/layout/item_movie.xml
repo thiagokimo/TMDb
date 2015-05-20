@@ -3,18 +3,50 @@
     android:layout_width="match_parent" android:layout_height="240dp">
 
     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_placeholder"/>
+
+    <ImageView
+        android:id="@+id/image"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:padding="16sp"
-        android:text="SOME MOVIE NAME"
-        android:textColor="@color/lightPrimary"
-        android:background="#64000000"
-        android:textSize="16sp"
-        android:layout_alignParentBottom="true"
-        android:maxLines="2"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:background="#64262626"/>
+
+    <!--<View-->
+        <!--android:background="@drawable/shadow_down"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize" />-->
+
+    <View
+        android:background="@drawable/shadow_up"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <TextView
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/lightPrimary"
+        android:id="@+id/text"
+        android:text="SOME MOVIE NAME"
+        android:maxLines="2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:background="?attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

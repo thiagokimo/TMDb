@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.kimo.themoviedb" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".TheMovieDB"
         android:allowBackup="true"
@@ -9,6 +12,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:name=".presentation.view.ui.activity.SearchMoviesActivity"
             android:label="@string/app_name" >
@@ -17,6 +21,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".presentation.view.ui.activity.MovieDetailActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.kimo.themoviedb.presentation.view.ui.activity.SearchMoviesActivity"/>
         </activity>
     </application>
 

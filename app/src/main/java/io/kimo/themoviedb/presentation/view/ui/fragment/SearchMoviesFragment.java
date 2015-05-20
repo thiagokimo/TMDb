@@ -49,7 +49,7 @@ public class SearchMoviesFragment extends BaseFragment implements SearchMoviesVi
 
     @Override
     public void instantiatePresenter() {
-        presenter = new SearchMoviesPresenter(this);
+        presenter = new SearchMoviesPresenter(getActivity(), this);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class SearchMoviesFragment extends BaseFragment implements SearchMoviesVi
     public void configureGUI() {
 
         //RECYLCER VIEW CONFIGURATIONS
-        adapter = new SearchMoviesAdapter();
+        adapter = new SearchMoviesAdapter(getActivity());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);

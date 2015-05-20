@@ -25,6 +25,7 @@ dependencies {
     //PRESENTATION DEPENDENCIES
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.android.support:recyclerview-v7:21.0.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
     //DOMAIN DEPENDENCIES
     compile 'com.path:android-priority-jobqueue:1.1.2'
