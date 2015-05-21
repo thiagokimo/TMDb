@@ -2,11 +2,12 @@ package io.kimo.themoviedb.presentation.view;
 
 import java.util.List;
 
+import io.kimo.themoviedb.presentation.BaseView;
 import io.kimo.themoviedb.presentation.model.MovieModel;
 
-public interface SearchMoviesView extends LoadDataView {
+public interface SearchMoviesView extends BaseView {
 
-    void renderMovies(List<MovieModel> movies);
-    void clearMovies();
+    void renderMoviesList(List<MovieModel> movies);
+    void removeMoviesList();
 
 }

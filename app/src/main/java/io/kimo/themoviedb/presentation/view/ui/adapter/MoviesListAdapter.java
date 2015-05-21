@@ -17,12 +17,12 @@ import io.kimo.themoviedb.TheMovieDB;
 import io.kimo.themoviedb.presentation.model.MovieModel;
 import io.kimo.themoviedb.presentation.view.ui.activity.MovieDetailActivity;
 
-public class SearchMoviesAdapter extends RecyclerView.Adapter<SearchMoviesAdapter.ViewHolder> {
+public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.ViewHolder> {
 
     private Context context;
     private List<MovieModel> data = new ArrayList<>();
 
-    public SearchMoviesAdapter(Context context) {
+    public MoviesListAdapter(Context context) {
         this.context = context;
     }
 
