@@ -9,4 +9,5 @@ public interface SearchMoviesView extends LoadDataView {
     void renderMoviesList(List<MovieModel> movies);
     void removeMoviesList();
 
+    void cleanTimer();
 }

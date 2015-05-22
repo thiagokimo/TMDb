@@ -35,10 +35,10 @@ public class SearchMoviesPresenter implements BasePresenter {
 
     @Override
     public void destroyView() {
-
+        view.cleanTimer();
     }
 
-    public void search(String query) {
+    public void performSearch(String query) {
         if(!TextUtils.isEmpty(query) && !lastQuery.equals(query.trim())) { // avoid blank searches and consecutive repeated searches
 
             lastQuery = query.trim(); // store the last query

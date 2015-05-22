@@ -27,7 +27,7 @@ public class SearchMoviesFragment extends BaseFragment implements SearchMoviesVi
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == QUERY_SUBMITTED) {
-                presenter.search(typedQuery);
+                presenter.performSearch(typedQuery);
             }
         }
     };
@@ -75,8 +75,8 @@ public class SearchMoviesFragment extends BaseFragment implements SearchMoviesVi
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                if(!query.equals(typedQuery)) { // avoid a consecutive api request
-                    presenter.search(query);
+                if (!query.equals(typedQuery)) { // avoid a consecutive api request
+                    presenter.performSearch(query);
                 }
 
                 return false;
@@ -86,8 +86,8 @@ public class SearchMoviesFragment extends BaseFragment implements SearchMoviesVi
             public boolean onQueryTextChange(String newText) {
                 typedQuery = newText; // store the query
 
-                queryHandler.removeMessages(QUERY_SUBMITTED); //removing old handler calls
-                queryHandler.sendEmptyMessageDelayed(QUERY_SUBMITTED, 1000); //submit after 1 second to avoid multiple api calls
+                queryHandler.removeMessages(QUERY_SUBMITTED);
+                queryHandler.sendEmptyMessageDelayed(QUERY_SUBMITTED, 1000);
 
                 return false;
             }
@@ -125,6 +125,11 @@ public class SearchMoviesFragment extends BaseFragment implements SearchMoviesVi
     @Override
     public void removeMoviesList() {
         renderMoviesList(new ArrayList<MovieModel>());
+    }
+
+    @Override
+    public void cleanTimer() {
+        queryHandler.removeMessages(QUERY_SUBMITTED);
     }
 
     @Override
