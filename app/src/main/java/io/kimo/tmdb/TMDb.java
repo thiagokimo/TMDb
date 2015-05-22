@@ -2,10 +2,12 @@ package io.kimo.tmdb;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.config.Configuration;
 import com.squareup.picasso.Picasso;
 
+import io.fabric.sdk.android.Fabric;
 import io.kimo.tmdb.data.PicassoCache;
 import io.kimo.tmdb.data.SharedPreferencesController;
 
@@ -18,6 +20,7 @@ public class TMDb extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
 
         configureJobManager();
         configurePicasso();
