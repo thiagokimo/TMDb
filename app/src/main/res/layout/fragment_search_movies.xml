@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        app:queryHint="Type a movie title" />
+        app:queryHint="Type a movie title"
+        android:elevation="2dp"/>
 
     <FrameLayout
         android:id="@+id/results_container"

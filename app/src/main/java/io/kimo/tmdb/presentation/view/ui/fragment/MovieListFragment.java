@@ -2,7 +2,7 @@ package io.kimo.tmdb.presentation.view.ui.fragment;
 
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -99,7 +99,8 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
         //RECYLCER VIEW CONFIGURATIONS
         adapter = new MoviesListAdapter(getActivity());
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         recyclerView.setAdapter(adapter);
         //RECYLCER VIEW CONFIGURATIONS
 
