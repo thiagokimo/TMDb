@@ -2,32 +2,33 @@ package io.kimo.tmdb.domain.usecase;
 
 import io.kimo.tmdb.domain.BaseUseCase;
 import io.kimo.tmdb.domain.BaseUseCaseCallback;
-import io.kimo.tmdb.domain.entity.ConfigurationEntity;
+import io.kimo.tmdb.domain.entity.MovieDetailEntity;
 import io.kimo.tmdb.domain.service.API;
-import io.kimo.tmdb.domain.service.response.GetImageConfigurationResponse;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class GetImageConfigurationUseCase extends BaseUseCase {
+public class GetMovieDetailUseCase extends BaseUseCase {
 
-    public interface GetImageConfigurationUseCaseCallback extends BaseUseCaseCallback {
-        void onConfigurationDownloaded(ConfigurationEntity configurationEntity);
+    public interface GetMovieDetailUseCaseCallback extends BaseUseCaseCallback {
+        void onMovieDetailLoaded(MovieDetailEntity movieDetailEntity);
     }
 
+    private int movieID;
     private String apiKey;
 
-    public GetImageConfigurationUseCase(String apiKey, GetImageConfigurationUseCaseCallback callback) {
+    public GetMovieDetailUseCase(String apiKey, int movieID, GetMovieDetailUseCaseCallback callback) {
         super(callback);
+        this.movieID = movieID;
         this.apiKey = apiKey;
     }
 
     @Override
     public void onRun() throws Throwable {
-        API.http().getConfigurations(apiKey, new Callback<GetImageConfigurationResponse>() {
+        API.http().movieDetails(apiKey, String.valueOf(movieID), new Callback<MovieDetailEntity>() {
             @Override
-            public void success(GetImageConfigurationResponse getImageConfigurationResponse, Response response) {
-                ((GetImageConfigurationUseCaseCallback)callback).onConfigurationDownloaded(getImageConfigurationResponse.getImages());
+            public void success(MovieDetailEntity movieDetailEntity, Response response) {
+                ((GetMovieDetailUseCaseCallback)callback).onMovieDetailLoaded(movieDetailEntity);
             }
 
             @Override

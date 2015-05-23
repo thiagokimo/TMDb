@@ -3,6 +3,7 @@ package io.kimo.tmdb.presentation.mvp.view.ui.adapter;
 import android.content.Context;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Vi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_card_movie, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_movie, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -47,7 +48,13 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Vi
         MovieModel movieModel = data.get(i);
 
         viewHolder.title.setText(movieModel.getName());
-        viewHolder.subtitle.setText(movieModel.getYearOfRelease());
+
+        if (TextUtils.isEmpty(movieModel.getYearOfRelease())) {
+            viewHolder.subtitle.setVisibility(View.GONE);
+        } else {
+            viewHolder.subtitle.setText(movieModel.getYearOfRelease());
+        }
+
         TMDb.PICASSO.load(movieModel.getCover()).into(viewHolder.cover);
     }
 

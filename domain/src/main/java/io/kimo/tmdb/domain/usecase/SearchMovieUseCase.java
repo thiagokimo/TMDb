@@ -1,8 +1,6 @@
 package io.kimo.tmdb.domain.usecase;
 
 
-import android.content.Context;
-
 import java.util.List;
 
 import io.kimo.tmdb.domain.BaseUseCase;
@@ -23,8 +21,8 @@ public class SearchMovieUseCase extends BaseUseCase {
     private String apiKey;
     private String query;
 
-    public SearchMovieUseCase(Context context, String apiKey, String query, SearchMovieUseCaseCallback callback) {
-        super(context, callback);
+    public SearchMovieUseCase(String apiKey, String query, SearchMovieUseCaseCallback callback) {
+        super(callback);
         this.apiKey = apiKey;
         this.query = query;
     }

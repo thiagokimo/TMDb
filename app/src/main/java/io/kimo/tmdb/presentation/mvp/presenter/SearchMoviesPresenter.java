@@ -19,13 +19,14 @@ import io.kimo.tmdb.presentation.mvp.view.SearchMoviesView;
 public class SearchMoviesPresenter implements BasePresenter {
 
     private SearchMoviesView view;
-    private Context context;
+    private String apiKey;
+
 
     private String lastQuery = "";
 
     public SearchMoviesPresenter(Context context, SearchMoviesView view) {
         this.view = view;
-        this.context = context;
+        this.apiKey = context.getString(R.string.api_key);
     }
 
     @Override
@@ -34,7 +35,7 @@ public class SearchMoviesPresenter implements BasePresenter {
         view.showLoading();
 
         if(!TMDb.LOCAL_DATA.hasBaseImageURL()) {
-            TMDb.JOB_MANAGER.addJobInBackground(new GetImageConfigurationUseCase(context, context.getString(R.string.api_key), new GetImageConfigurationUseCase.GetImageConfigurationUseCaseCallback() {
+            TMDb.JOB_MANAGER.addJobInBackground(new GetImageConfigurationUseCase(apiKey, new GetImageConfigurationUseCase.GetImageConfigurationUseCaseCallback() {
                 @Override
                 public void onConfigurationDownloaded(ConfigurationEntity configurationEntity) {
                     TMDb.LOCAL_DATA.storeBaseImageURL(configurationEntity.getBase_url());
@@ -71,7 +72,7 @@ public class SearchMoviesPresenter implements BasePresenter {
             view.hideView();
             view.showLoading();
 
-            TMDb.JOB_MANAGER.addJobInBackground(new SearchMovieUseCase(context, context.getString(R.string.api_key), query.trim(), new SearchMovieUseCase.SearchMovieUseCaseCallback() {
+            TMDb.JOB_MANAGER.addJobInBackground(new SearchMovieUseCase(apiKey, lastQuery, new SearchMovieUseCase.SearchMovieUseCaseCallback() {
                 @Override
                 public void onMoviesSearched(List<MovieEntity> movieEntities) {
                     view.hideLoading();
@@ -84,6 +85,7 @@ public class SearchMoviesPresenter implements BasePresenter {
                     view.hideLoading();
                     view.removeMoviesList();
                     view.showFeedback(reason);
+                    lastQuery = "";
                 }
             }));
         }
