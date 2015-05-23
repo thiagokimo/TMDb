@@ -17,13 +17,14 @@ import io.kimo.tmdb.presentation.mvp.model.MovieModel;
 import io.kimo.tmdb.presentation.mvp.presenter.MovieDetailPresenter;
 import io.kimo.tmdb.presentation.mvp.view.MovieDetailView;
 import io.kimo.tmdb.presentation.mvp.view.ui.BaseFragment;
+import io.kimo.tmdb.presentation.mvp.view.ui.activity.MovieImagesActivity;
 
 public class MovieDetailFragment extends BaseFragment implements MovieDetailView {
 
     public static final String TAG = MovieDetailFragment.class.getSimpleName();
     public static final String MOVIE_MODEL = TAG + ".MOVIE_MODEL";
 
-    private View mainView, loadingView, taglineContainer, overviewContainer, blackMask;
+    private View mainView, loadingView, taglineContainer, overviewContainer, blackMask, galleryButton;
 
     private ImageView coverImage;
     private TextView title, year, homepage, companies, tagline, overview;
@@ -90,6 +91,7 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
         tagline = (TextView) mainView.findViewById(R.id.tagline);
         overviewContainer = mainView.findViewById(R.id.overview_container);
         overview = (TextView) mainView.findViewById(R.id.overview);
+        galleryButton = view.findViewById(R.id.fab);
     }
 
     @Override
@@ -99,6 +101,12 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
             @Override
             public void onClick(View v) {
                 presenter.onHomepageClicked();
+            }
+        });
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onGalleryClicked();
             }
         });
     }
@@ -180,6 +188,11 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
         Intent browserIntent = new Intent(Intent.ACTION_VIEW);
         browserIntent.setData(Uri.parse(url));
         startActivity(browserIntent);
+    }
+
+    @Override
+    public void openGallery() {
+        startActivity(MovieImagesActivity.getCallingIntent(getActivity(), movieModel.getId()));
     }
 
     @Override

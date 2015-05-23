@@ -29,7 +29,7 @@ public class SearchMovieUseCase extends BaseUseCase {
 
     @Override
     public void onRun() throws Throwable {
-        API.http().searchMovie(apiKey, query, new Callback<SearchMovieResponse>() {
+        API.http().search(apiKey, query, new Callback<SearchMovieResponse>() {
             @Override
             public void success(SearchMovieResponse searchMovieResponse, Response response) {
                 ((SearchMovieUseCaseCallback) callback).onMoviesSearched(searchMovieResponse.getResults());

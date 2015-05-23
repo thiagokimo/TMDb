@@ -4,7 +4,8 @@ public class MovieModel {
 
     private int id;
     private String name;
-    private String cover;
+    private String bigCover;
+    private String smallCover;
     private String yearOfRelease;
     private String homepage;
     private String companies;
@@ -67,11 +68,19 @@ public class MovieModel {
         this.name = name;
     }
 
-    public String getCover() {
-        return cover;
+    public String getSmallCover() {
+        return smallCover;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setSmallCover(String smallCover) {
+        this.smallCover = smallCover;
+    }
+
+    public String getBigCover() {
+        return bigCover;
+    }
+
+    public void setBigCover(String bigCover) {
+        this.bigCover = bigCover;
     }
 }

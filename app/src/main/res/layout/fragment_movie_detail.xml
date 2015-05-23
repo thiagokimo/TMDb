@@ -60,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/title"
                         tools:text="A Movie Title"
                         android:ellipsize="end"
@@ -71,7 +71,7 @@
                         android:layout_height="80dp"
                         android:gravity="center_vertical" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:drawableLeft="@drawable/ic_calendar"
                         android:drawablePadding="16dp"
                         android:id="@+id/year"
@@ -81,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"/>
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:drawableLeft="@drawable/ic_city"
                         android:drawablePadding="16dp"
                         android:id="@+id/homepage"
@@ -92,7 +92,7 @@
                         android:minHeight="48dp"
                         android:background="?attr/selectableItemBackground"/>
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:drawableLeft="@drawable/ic_language"
                         android:drawablePadding="16dp"
                         android:id="@+id/companies"
@@ -108,13 +108,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:text="tagline"
                             style="@style/HeaderTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:id="@+id/tagline"
                             tools:text="A simple tagline."
                             android:layout_width="match_parent"
@@ -129,13 +129,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:text="overview"
                             style="@style/HeaderTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:id="@+id/overview"
                             tools:text="@string/lorem"
                             android:layout_width="match_parent"

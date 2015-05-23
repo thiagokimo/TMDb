@@ -18,12 +18,12 @@ import io.kimo.tmdb.presentation.TMDb;
 import io.kimo.tmdb.presentation.mvp.model.MovieModel;
 import io.kimo.tmdb.presentation.mvp.view.ui.activity.MovieDetailActivity;
 
-public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.ViewHolder> {
+public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
 
     private Context context;
     private List<MovieModel> data = new ArrayList<>();
 
-    public MoviesListAdapter(Context context) {
+    public MoviesAdapter(Context context) {
         this.context = context;
     }
 
@@ -55,7 +55,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Vi
             viewHolder.subtitle.setText(movieModel.getYearOfRelease());
         }
 
-        TMDb.PICASSO.load(movieModel.getCover()).into(viewHolder.cover);
+        TMDb.PICASSO.load(movieModel.getSmallCover()).into(viewHolder.cover);
     }
 
     @Override

@@ -22,4 +22,5 @@ public interface MovieDetailView extends LoadDataView {
     void hideOverview();
 
     void openMovieWebsite(String url);
+    void openGallery();
 }

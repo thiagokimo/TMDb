@@ -1,12 +1,13 @@
 package io.kimo.tmdb.presentation;
 
+import android.os.Build;
 import android.text.TextUtils;
 
 public class Utils {
 
-    public static String buildCompleteImageURL(String path) {
+    public static String buildCompleteImageURL(String path, String size) {
         if(TMDb.LOCAL_DATA.hasBaseImageURL()) {
-            return TMDb.LOCAL_DATA.getBaseImageURL() + "original/" + path;
+            return TMDb.LOCAL_DATA.getBaseImageURL() + size + path;
         } else {
             return path;
         }
@@ -18,5 +19,9 @@ public class Utils {
         } else {
             return "";
         }
+    }
+
+    public static boolean isLollipop() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     }
 }

@@ -24,7 +24,8 @@ public class MovieMapper extends BaseMapper<MovieEntity, MovieModel> {
         movieModel.setYearOfRelease(Utils.getYearFromServerDate(entity.getRelease_date()));
 
         if(!TextUtils.isEmpty(entity.getPoster_path())) {
-            movieModel.setCover(Utils.buildCompleteImageURL(entity.getPoster_path()));
+            movieModel.setSmallCover(Utils.buildCompleteImageURL(entity.getPoster_path(), "w154"));
+            movieModel.setBigCover(Utils.buildCompleteImageURL(entity.getPoster_path(), "original"));
         }
 
         return movieModel;

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">TMDb</string>
     <string name="api_key">a5944c8cac191dd5824cd7c5936bc1fa</string>
+
+    <string name="title_gallery">Gallery</string>
 </resources>

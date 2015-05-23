@@ -1,23 +1,26 @@
 package io.kimo.tmdb.domain.usecase;
 
+import java.util.List;
+
 import io.kimo.tmdb.domain.BaseUseCase;
 import io.kimo.tmdb.domain.BaseUseCaseCallback;
-import io.kimo.tmdb.domain.entity.MovieDetailEntity;
+import io.kimo.tmdb.domain.entity.ImageEntity;
 import io.kimo.tmdb.domain.service.API;
+import io.kimo.tmdb.domain.service.response.GetMovieImagesResponse;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class GetMovieDetailUseCase extends BaseUseCase {
+public class GetMovieImagesUseCase extends BaseUseCase{
 
-    public interface GetMovieDetailUseCaseCallback extends BaseUseCaseCallback {
-        void onMovieDetailLoaded(MovieDetailEntity movieDetailEntity);
+    public interface GetMovieImagesUseCaseCallback extends BaseUseCaseCallback {
+        void onImagesUrlsLoaded(List<ImageEntity> backdrops, List<ImageEntity> posters);
     }
 
-    private int movieID;
     private String apiKey;
+    private int movieID;
 
-    public GetMovieDetailUseCase(String apiKey, int movieID, GetMovieDetailUseCaseCallback callback) {
+    public GetMovieImagesUseCase(String apiKey, int movieID, GetMovieImagesUseCaseCallback callback) {
         super(callback);
         this.movieID = movieID;
         this.apiKey = apiKey;
@@ -25,10 +28,10 @@ public class GetMovieDetailUseCase extends BaseUseCase {
 
     @Override
     public void onRun() throws Throwable {
-        API.http().movieDetails(apiKey, movieID, new Callback<MovieDetailEntity>() {
+        API.http().movieImages(apiKey, movieID, new Callback<GetMovieImagesResponse>() {
             @Override
-            public void success(MovieDetailEntity movieDetailEntity, Response response) {
-                ((GetMovieDetailUseCaseCallback)callback).onMovieDetailLoaded(movieDetailEntity);
+            public void success(GetMovieImagesResponse getMovieImagesResponse, Response response) {
+                ((GetMovieImagesUseCaseCallback)callback).onImagesUrlsLoaded(getMovieImagesResponse.getBackdrops(), getMovieImagesResponse.getPosters());
             }
 
             @Override

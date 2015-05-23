@@ -10,6 +10,8 @@ import io.kimo.tmdb.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void configureToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         if(toolbar != null) {
             setSupportActionBar(toolbar);
@@ -34,4 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public abstract int getLayoutResource();
     public abstract Fragment getMainFragment();
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
 }

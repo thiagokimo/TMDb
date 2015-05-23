@@ -3,6 +3,7 @@ package io.kimo.tmdb.domain.service;
 
 import io.kimo.tmdb.domain.entity.MovieDetailEntity;
 import io.kimo.tmdb.domain.service.response.GetImageConfigurationResponse;
+import io.kimo.tmdb.domain.service.response.GetMovieImagesResponse;
 import io.kimo.tmdb.domain.service.response.SearchMovieResponse;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -18,15 +19,19 @@ public class API {
 
         //CONFIGURATIONS
         @GET("/configuration")
-        void getConfigurations(@Query("api_key") String apiKey, Callback<GetImageConfigurationResponse> callback);
+        void configurations(@Query("api_key") String apiKey, Callback<GetImageConfigurationResponse> callback);
 
         //MOVIE SEARCH AUTOCOMPLETE
         @GET("/search/movie")
-        void searchMovie(@Query("api_key") String apiKey, @Query("query") String query, Callback<SearchMovieResponse> callback);
+        void search(@Query("api_key") String apiKey, @Query("query") String query, Callback<SearchMovieResponse> callback);
 
         //MOVIE DETAIL
         @GET("/movie/{id}")
-        void movieDetails(@Query("api_key") String apiKey, @Path("id") String movieID, Callback<MovieDetailEntity> callback);
+        void movieDetails(@Query("api_key") String apiKey, @Path("id") int movieID, Callback<MovieDetailEntity> callback);
+
+        //MOVIE IMAGES
+        @GET("/movie/{id}/images")
+        void movieImages(@Query("api_key") String apiKey, @Path("id") int movieID, Callback<GetMovieImagesResponse> callback);
     }
 
     public static ROUTES http() {

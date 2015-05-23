@@ -34,7 +34,7 @@ public class MovieDetailPresenter implements BasePresenter {
             public void onMovieDetailLoaded(MovieDetailEntity movieDetailEntity) {
                 updateMovieModel(movieDetailEntity);
 
-                view.updateBackground(movieModel.getCover());
+                view.updateBackground(movieModel.getBigCover());
                 view.updateTitle(movieModel.getName());
 
                 if (TextUtils.isEmpty(movieModel.getYearOfRelease())) {
@@ -86,6 +86,10 @@ public class MovieDetailPresenter implements BasePresenter {
         if(!TextUtils.isEmpty(movieModel.getHomepage())) {
             view.openMovieWebsite(movieModel.getHomepage());
         }
+    }
+
+    public void onGalleryClicked() {
+        view.openGallery();
     }
 
     private void hideAllViews() {

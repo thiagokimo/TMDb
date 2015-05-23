@@ -23,10 +23,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.mvp.view.ui.activity.MovieDetailActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".presentation.mvp.view.ui.activity.SearchMoviesActivity"/>
+                android:value="io.kimo.tmdb.presentation.mvp.view.ui.activity.SearchMoviesActivity"/>
+        </activity>
+        <activity android:name=".presentation.mvp.view.ui.activity.MovieImagesActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_gallery">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.kimo.tmdb.presentation.mvp.view.ui.activity.MovieDetailActivity"/>
         </activity>
         <meta-data
             android:name="io.fabric.ApiKey"

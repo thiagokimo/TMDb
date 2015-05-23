@@ -24,10 +24,10 @@ public class GetImageConfigurationUseCase extends BaseUseCase {
 
     @Override
     public void onRun() throws Throwable {
-        API.http().getConfigurations(apiKey, new Callback<GetImageConfigurationResponse>() {
+        API.http().configurations(apiKey, new Callback<GetImageConfigurationResponse>() {
             @Override
             public void success(GetImageConfigurationResponse getImageConfigurationResponse, Response response) {
-                ((GetImageConfigurationUseCaseCallback)callback).onConfigurationDownloaded(getImageConfigurationResponse.getImages());
+                ((GetImageConfigurationUseCaseCallback) callback).onConfigurationDownloaded(getImageConfigurationResponse.getImages());
             }
 
             @Override
