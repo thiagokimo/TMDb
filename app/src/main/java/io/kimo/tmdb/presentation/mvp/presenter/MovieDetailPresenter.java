@@ -40,7 +40,7 @@ public class MovieDetailPresenter implements BasePresenter {
                 if (TextUtils.isEmpty(movieModel.getYearOfRelease())) {
                     view.hideYearOfRelease();
                 } else {
-                    view.updateYearOfRelease("(" + movieModel.getYearOfRelease() + ")");
+                    view.updateYearOfRelease(movieModel.getYearOfRelease());
                 }
 
                 if (TextUtils.isEmpty(movieModel.getHomepage())) {

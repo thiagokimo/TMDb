@@ -12,6 +12,8 @@
         android:scaleType="centerCrop"/>
 
     <View
+        android:id="@+id/black_mask"
+        android:visibility="gone"
         android:background="#66000000"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -58,6 +60,8 @@
                         android:gravity="center_vertical" />
 
                     <TextView
+                        android:drawableLeft="@drawable/ic_calendar"
+                        android:drawablePadding="16dp"
                         android:id="@+id/year"
                         tools:text="(XYZ)"
                         style="@style/DetailField"
@@ -66,7 +70,7 @@
                         android:minHeight="48dp"/>
 
                     <TextView
-                        android:drawableLeft="@drawable/ic_city_b"
+                        android:drawableLeft="@drawable/ic_city"
                         android:drawablePadding="16dp"
                         android:id="@+id/homepage"
                         tools:text="http://www.somewebsite.com/"

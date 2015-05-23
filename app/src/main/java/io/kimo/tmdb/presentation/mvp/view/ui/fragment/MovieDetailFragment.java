@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Callback;
+
 import io.kimo.tmdb.R;
 import io.kimo.tmdb.presentation.TMDb;
 import io.kimo.tmdb.presentation.mapper.MovieMapper;
@@ -21,7 +23,7 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
     public static final String TAG = MovieDetailFragment.class.getSimpleName();
     public static final String MOVIE_MODEL = TAG + ".MOVIE_MODEL";
 
-    private View mainView, loadingView, taglineContainer, overviewContainer;
+    private View mainView, loadingView, taglineContainer, overviewContainer, blackMask;
 
     private ImageView coverImage;
     private TextView title, year, homepage, companies, tagline, overview;
@@ -81,6 +83,7 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
         title = (TextView) mainView.findViewById(R.id.title);
         year = (TextView) mainView.findViewById(R.id.year);
         coverImage = (ImageView) view.findViewById(R.id.cover);
+        blackMask = view.findViewById(R.id.black_mask);
         homepage = (TextView) mainView.findViewById(R.id.homepage);
         companies = (TextView) mainView.findViewById(R.id.companies);
         taglineContainer = mainView.findViewById(R.id.tagline_container);
@@ -102,7 +105,15 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
 
     @Override
     public void updateBackground(String value) {
-        TMDb.PICASSO.load(value).into(coverImage);
+        TMDb.PICASSO.load(value).into(coverImage, new Callback() {
+            @Override
+            public void onSuccess() {
+                blackMask.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onError() {}
+        });
     }
 
     @Override
