@@ -11,6 +11,7 @@ import com.squareup.picasso.Callback;
 
 import io.kimo.tmdb.R;
 import io.kimo.tmdb.presentation.TMDb;
+import io.kimo.tmdb.presentation.Utils;
 import io.kimo.tmdb.presentation.mvp.presenter.LoadingImagePresenter;
 import io.kimo.tmdb.presentation.mvp.view.LoadingImageView;
 import io.kimo.tmdb.presentation.mvp.view.ui.BaseFragment;
@@ -98,6 +99,7 @@ public class LoadingImageFragment extends BaseFragment implements LoadingImageVi
             @Override
             public void onSuccess() {
                 presenter.onImageRendered();
+                Utils.hideSystemUI(getActivity());
             }
 
             @Override
