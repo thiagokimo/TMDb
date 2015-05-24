@@ -36,6 +36,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="io.kimo.tmdb.presentation.mvp.view.ui.activity.MovieDetailActivity"/>
         </activity>
+        <activity android:name=".presentation.mvp.view.ui.activity.ImageActivity"
+            android:screenOrientation="fullSensor">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.kimo.tmdb.presentation.mvp.view.ui.activity.MovieImagesActivity"/>
+        </activity>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="dfefa327df420d24cccd64b46d71cc2438d3135e" />

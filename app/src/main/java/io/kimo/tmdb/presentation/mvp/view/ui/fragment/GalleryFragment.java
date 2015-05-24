@@ -99,9 +99,9 @@ public class GalleryFragment extends BaseFragment implements GalleryView {
         });
 
         //RECYCLER CONFIGURATIONS
-        adapter = new ImageAdapter();
+        adapter = new ImageAdapter(getActivity());
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         recyclerView.setAdapter(adapter);
         //RECYCLER CONFIGURATIONS
     }

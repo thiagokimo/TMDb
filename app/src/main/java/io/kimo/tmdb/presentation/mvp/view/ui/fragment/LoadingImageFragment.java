@@ -1,47 +1,39 @@
 package io.kimo.tmdb.presentation.mvp.view.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ogaclejapan.smarttablayout.SmartTabLayout;
-
-import java.util.List;
+import com.squareup.picasso.Callback;
 
 import io.kimo.tmdb.R;
-import io.kimo.tmdb.presentation.Utils;
-import io.kimo.tmdb.presentation.mvp.model.ImageModel;
-import io.kimo.tmdb.presentation.mvp.presenter.MovieImagesPresenter;
-import io.kimo.tmdb.presentation.mvp.view.MovieImagesView;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseActivity;
+import io.kimo.tmdb.presentation.TMDb;
+import io.kimo.tmdb.presentation.mvp.presenter.LoadingImagePresenter;
+import io.kimo.tmdb.presentation.mvp.view.LoadingImageView;
 import io.kimo.tmdb.presentation.mvp.view.ui.BaseFragment;
-import io.kimo.tmdb.presentation.mvp.view.ui.adapter.GalleryPagerAdapter;
 
-public class MovieImagesFragment extends BaseFragment implements MovieImagesView {
+public class LoadingImageFragment extends BaseFragment implements LoadingImageView {
 
-    public static final String TAG = MovieImagesFragment.class.getSimpleName();
-    public static final String MOVIE_ID = TAG + ".MOVIE_ID";
+    public static final String TAG = LoadingImageFragment.class.getSimpleName();
+    public static final String URL = TAG + ".URL";
 
-    private View mainView, loadingView, retryView;
-    private TextView retryMessage;
+    private ImageView mainView;
+    private View loadingView, retryView;
+    private TextView retryFeedback;
     private Button retryButton;
 
-    private ViewPager viewPager;
-    private GalleryPagerAdapter adapter;
-    private SmartTabLayout slidingTabLayout;
+    private LoadingImagePresenter presenter;
 
-    private MovieImagesPresenter presenter;
+    private String url;
 
-    private int movieID;
-
-    public static MovieImagesFragment newInstance(int movieID) {
-        MovieImagesFragment fragment = new MovieImagesFragment();
+    public static LoadingImageFragment newInstance(String url) {
+        LoadingImageFragment fragment = new LoadingImageFragment();
 
         Bundle args = new Bundle();
-        args.putInt(MOVIE_ID, movieID);
+        args.putString(URL, url);
 
         fragment.setArguments(args);
 
@@ -54,7 +46,7 @@ public class MovieImagesFragment extends BaseFragment implements MovieImagesView
         Bundle args = getArguments();
 
         if(args != null) {
-            movieID = args.getInt(MOVIE_ID);
+            url = args.getString(URL);
         }
 
         super.onCreate(savedInstanceState);
@@ -62,7 +54,7 @@ public class MovieImagesFragment extends BaseFragment implements MovieImagesView
 
     @Override
     public void instantiatePresenter() {
-        presenter = new MovieImagesPresenter(this, getActivity(), movieID);
+        presenter = new LoadingImagePresenter(this, url);
     }
 
     @Override
@@ -77,18 +69,16 @@ public class MovieImagesFragment extends BaseFragment implements MovieImagesView
 
     @Override
     public int getLayoutResource() {
-        return R.layout.fragment_pager_with_tabs;
+        return R.layout.fragment_loading_image;
     }
 
     @Override
     public void mapGUI(View view) {
-        mainView = view.findViewById(R.id.main_container);
+        mainView = (ImageView) view.findViewById(R.id.image);
         loadingView = view.findViewById(R.id.view_loading);
         retryView = view.findViewById(R.id.view_retry);
-        retryMessage = (TextView) retryView.findViewById(R.id.text);
+        retryFeedback = (TextView) retryView.findViewById(R.id.text);
         retryButton = (Button) retryView.findViewById(R.id.button);
-        viewPager = (ViewPager) view.findViewById(R.id.pager);
-        slidingTabLayout = (SmartTabLayout) view.findViewById(R.id.tabs);
     }
 
     @Override
@@ -99,20 +89,22 @@ public class MovieImagesFragment extends BaseFragment implements MovieImagesView
                 presenter.createView();
             }
         });
-
-        adapter = new GalleryPagerAdapter(getFragmentManager());
-        viewPager.setAdapter(adapter);
-        slidingTabLayout.setViewPager(viewPager);
-
-        //REMOVE TOOLBAR ELEVATION ON LOLLIPOP
-        if(Utils.isLollipop()) {
-            ((BaseActivity)getActivity()).getToolbar().setElevation(0);
-        }
     }
 
     @Override
-    public void renderTabs(List<ImageModel> backdrops, List<ImageModel> posters) {
-        adapter.setData(backdrops, posters);
+    public void renderImage(String url) {
+
+        TMDb.PICASSO.load(url).into(mainView, new Callback() {
+            @Override
+            public void onSuccess() {
+                presenter.onImageRendered();
+            }
+
+            @Override
+            public void onError() {
+                presenter.onRenderingError();
+            }
+        });
     }
 
     @Override
@@ -127,7 +119,7 @@ public class MovieImagesFragment extends BaseFragment implements MovieImagesView
 
     @Override
     public void showRetry(String msg) {
-        retryMessage.setText(msg);
+        retryFeedback.setText(msg);
         retryView.setVisibility(View.VISIBLE);
     }
 

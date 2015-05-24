@@ -18,6 +18,7 @@ public class ImageMapper extends BaseMapper<ImageEntity, ImageModel>{
     public ImageModel toModel(ImageEntity entity) {
         ImageModel model = new ImageModel();
 
+        model.setOriginalURL(Utils.buildCompleteImageURL(entity.getFile_path(), "original"));
         model.setUrl(Utils.buildCompleteImageURL(entity.getFile_path(), size));
 
         return model;
