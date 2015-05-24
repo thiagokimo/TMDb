@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="64dp">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/title"
                 android:maxLines="2"
                 android:textColor="@color/primaryText"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/subtitle"
                 android:textSize="8sp"
                 tools:text="SUBTITLE"
