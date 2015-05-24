@@ -1,9 +1,13 @@
 package io.kimo.tmdb.presentation.mvp.view.ui.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,10 +16,12 @@ import com.squareup.picasso.Callback;
 
 import io.kimo.tmdb.R;
 import io.kimo.tmdb.presentation.TMDb;
+import io.kimo.tmdb.presentation.Utils;
 import io.kimo.tmdb.presentation.mapper.MovieMapper;
 import io.kimo.tmdb.presentation.mvp.model.MovieModel;
 import io.kimo.tmdb.presentation.mvp.presenter.MovieDetailPresenter;
 import io.kimo.tmdb.presentation.mvp.view.MovieDetailView;
+import io.kimo.tmdb.presentation.mvp.view.ui.BaseActivity;
 import io.kimo.tmdb.presentation.mvp.view.ui.BaseFragment;
 import io.kimo.tmdb.presentation.mvp.view.ui.activity.MovieImagesActivity;
 
@@ -109,6 +115,16 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
                 presenter.onGalleryClicked();
             }
         });
+
+        Utils.setContentBehindToolbar((BaseActivity) getActivity());
+        configureScrollFade();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        presenter.onMainViewScrolled();
     }
 
     @Override
@@ -120,7 +136,8 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
             }
 
             @Override
-            public void onError() {}
+            public void onError() {
+            }
         });
     }
 
@@ -196,6 +213,25 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
     }
 
     @Override
+    public void updateToolbarColor() {
+
+        Toolbar toolbar = ((BaseActivity)getActivity()).getToolbar();
+
+        int scrollY = mainView.getScrollY();
+        ColorDrawable background = (ColorDrawable) toolbar.getBackground();
+        int padding = mainView.getPaddingTop();
+        double alpha = (1 - (((double) padding - (double) scrollY) / (double) padding)) * 255.0;
+        alpha = alpha < 0 ? 0 : alpha;
+        alpha = alpha > 255 ? 255 : alpha;
+
+        background.setAlpha((int) alpha);
+
+        float scrollRatio = (float) (alpha / 255f);
+        int titleColor = Utils.getAlphaColor(Color.WHITE, scrollRatio);
+        toolbar.setTitleTextColor(titleColor);
+    }
+
+    @Override
     public void showLoading() {
         loadingView.setVisibility(View.VISIBLE);
     }
@@ -235,5 +271,19 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
     @Override
     public void destroyItself() {
         getActivity().finish();
+    }
+
+    private void configureScrollFade() {
+
+        ((BaseActivity)getActivity()).setShouldFadeToolbar(true);
+
+        presenter.onMainViewScrolled();
+
+        mainView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                presenter.onMainViewScrolled();
+            }
+        });
     }
 }

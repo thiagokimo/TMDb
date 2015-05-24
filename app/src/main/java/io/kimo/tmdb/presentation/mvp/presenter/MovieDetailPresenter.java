@@ -29,6 +29,34 @@ public class MovieDetailPresenter implements BasePresenter {
         hideAllViews();
         view.showLoading();
 
+        downloadMovieDetails();
+    }
+
+    @Override
+    public void destroyView() {}
+
+    public void onHomepageClicked() {
+        if(!TextUtils.isEmpty(movieModel.getHomepage())) {
+            view.openMovieWebsite(movieModel.getHomepage());
+        }
+    }
+
+    public void onGalleryClicked() {
+        view.openGallery();
+    }
+
+    public void onMainViewScrolled() {
+        view.updateToolbarColor();
+    }
+
+    private void hideAllViews() {
+        view.hideView();
+        view.hideLoading();
+        view.hideRetry();
+        view.hideEmpty();
+    }
+
+    private void downloadMovieDetails() {
         TMDb.JOB_MANAGER.addJobInBackground(new GetMovieDetailUseCase(apiKey, movieModel.getId(), new GetMovieDetailUseCase.GetMovieDetailUseCaseCallback() {
             @Override
             public void onMovieDetailLoaded(MovieDetailEntity movieDetailEntity) {
@@ -77,26 +105,6 @@ public class MovieDetailPresenter implements BasePresenter {
                 view.destroyItself();
             }
         }));
-    }
-
-    @Override
-    public void destroyView() {}
-
-    public void onHomepageClicked() {
-        if(!TextUtils.isEmpty(movieModel.getHomepage())) {
-            view.openMovieWebsite(movieModel.getHomepage());
-        }
-    }
-
-    public void onGalleryClicked() {
-        view.openGallery();
-    }
-
-    private void hideAllViews() {
-        view.hideView();
-        view.hideLoading();
-        view.hideRetry();
-        view.hideEmpty();
     }
 
     private void updateMovieModel(MovieDetailEntity detailEntity) {

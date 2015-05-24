@@ -34,29 +34,7 @@ public class SearchMoviesPresenter implements BasePresenter {
         hideAllViews();
         view.showLoading();
 
-        if(!TMDb.LOCAL_DATA.hasBaseImageURL()) {
-            TMDb.JOB_MANAGER.addJobInBackground(new GetImageConfigurationUseCase(apiKey, new GetImageConfigurationUseCase.GetImageConfigurationUseCaseCallback() {
-                @Override
-                public void onConfigurationDownloaded(ConfigurationEntity configurationEntity) {
-                    TMDb.LOCAL_DATA.storeBaseImageURL(configurationEntity.getBase_url());
-                    view.hideLoading();
-                    view.removeMoviesList();
-                    view.showView();
-                }
-
-                @Override
-                public void onError(String reason) {
-                    view.hideLoading();
-                    view.showView();
-                    view.showFeedback(reason);
-                }
-            }));
-
-        } else {
-            view.hideLoading();
-            view.removeMoviesList();
-            view.showView();
-        }
+        checkIfHasTheBaseImageURL();
     }
 
     @Override
@@ -94,5 +72,34 @@ public class SearchMoviesPresenter implements BasePresenter {
     private void hideAllViews() {
         view.hideView();
         view.hideLoading();
+    }
+
+    private void checkIfHasTheBaseImageURL() {
+        if(!TMDb.LOCAL_DATA.hasBaseImageURL()) {
+            TMDb.JOB_MANAGER.addJobInBackground(new GetImageConfigurationUseCase(apiKey, new GetImageConfigurationUseCase.GetImageConfigurationUseCaseCallback() {
+                @Override
+                public void onConfigurationDownloaded(ConfigurationEntity configurationEntity) {
+                    TMDb.LOCAL_DATA.storeBaseImageURL(configurationEntity.getBase_url());
+
+                    showEmptyMovies();
+                }
+
+                @Override
+                public void onError(String reason) {
+                    view.hideLoading();
+                    view.showView();
+                    view.showFeedback(reason);
+                }
+            }));
+
+        } else {
+            showEmptyMovies();
+        }
+    }
+
+    private void showEmptyMovies() {
+        view.hideLoading();
+        view.removeMoviesList();
+        view.showView();
     }
 }

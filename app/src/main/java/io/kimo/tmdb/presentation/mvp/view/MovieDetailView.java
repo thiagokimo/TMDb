@@ -23,4 +23,6 @@ public interface MovieDetailView extends LoadDataView {
 
     void openMovieWebsite(String url);
     void openGallery();
+
+    void updateToolbarColor();
 }

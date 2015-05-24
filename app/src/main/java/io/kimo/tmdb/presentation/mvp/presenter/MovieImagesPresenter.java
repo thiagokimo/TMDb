@@ -30,6 +30,20 @@ public class MovieImagesPresenter implements BasePresenter {
 
         view.showLoading();
 
+        downloadMovieImages();
+    }
+
+    @Override
+    public void destroyView() {}
+
+    private void hideAllViews() {
+        view.hideView();
+        view.hideEmpty();
+        view.hideLoading();
+        view.hideRetry();
+    }
+
+    private void downloadMovieImages() {
         TMDb.JOB_MANAGER.addJobInBackground(new GetMovieImagesUseCase(context.getString(R.string.api_key), movieID, new GetMovieImagesUseCase.GetMovieImagesUseCaseCallback() {
             @Override
             public void onImagesUrlsLoaded(List<ImageEntity> backdrops, List<ImageEntity> posters) {
@@ -44,15 +58,5 @@ public class MovieImagesPresenter implements BasePresenter {
                 view.destroyItself();
             }
         }));
-    }
-
-    @Override
-    public void destroyView() {}
-
-    private void hideAllViews() {
-        view.hideView();
-        view.hideEmpty();
-        view.hideLoading();
-        view.hideRetry();
     }
 }
