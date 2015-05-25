@@ -59,4 +59,5 @@ The **Retrofit** library was used to do our http calls. The **Priority Job Queue
 
 ## Author
 Thiago Rocha
+
 +553184349266
