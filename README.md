@@ -68,6 +68,11 @@ The **Retrofit** library was used to do our http calls. The **Priority Job Queue
 - An Image transition from the movie search screen to the movie detail screen.
 - I didn't write tests. If I did I would test my presenters in the presentation layer and my use cases in the domain layer.
 
+## References
+
+- [The Clean Architecture by Uncle Bob](http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [Architecting Android…The clean way? by Fernando Cejas](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/)
+
 ## Author
 Thiago Rocha
 
