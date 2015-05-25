@@ -61,7 +61,7 @@ The **Retrofit** library was used to do our http calls. The **Priority Job Queue
 
 - In order to solve the request search limit I called the search movie use case 1 second after the user typed in the search input.
 - Since there were different image sizes, I displayed lower-sized images in my recylerviews and bigger or original sizes of images in the detailed screens.
-- To pass data from the domain layer to the presentation layer I used a mapper to filter out all unnecessary information I wasn't going to use in the views.
+- To pass data from the domain layer to the presentation layer I used a mapper to filter out all unnecessary information from the server-side that I wasn't going to use in the views.
 
 ## Things I could have done
 
