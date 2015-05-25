@@ -1,6 +1,11 @@
 # TMDb
 Another of those Android REST clients.
 
+## Screenshots
+![Movie Search](https://raw.githubusercontent.com/thiagokimo/TMDb/master/screenshots/movie-search.png)
+![Movie Detail](https://raw.githubusercontent.com/thiagokimo/TMDb/master/screenshots/movie-detail.png)
+![Movie Images](https://raw.githubusercontent.com/thiagokimo/TMDb/master/screenshots/movie-images.png)
+
 ## TL;DR
 This project is an Android app which displays data from [The Movie Database](https://www.themoviedb.org) API.
 
