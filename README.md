@@ -55,7 +55,7 @@ compile 'com.path:android-priority-jobqueue:1.1.2'
 compile 'com.squareup.retrofit:retrofit:1.9.0'
 ```
 
-The **Retrofit** library was used to do our http calls. The **Priority Job Queue** was used to wrap all our use cases in a thread-safe environment.
+The **Retrofit** library was used to do http calls. The **Priority Job Queue** was used to wrap all our use cases in a thread-safe environment.
 
 ## Notes
 
