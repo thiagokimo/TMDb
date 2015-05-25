@@ -1,5 +1,5 @@
 # TMDb
-Another of those Android REST clients.
+A simple Android client for The Movie DB in Material Design
 
 ## TL;DR
 This project is an Android app which displays data from [The Movie Database](https://www.themoviedb.org) API.
