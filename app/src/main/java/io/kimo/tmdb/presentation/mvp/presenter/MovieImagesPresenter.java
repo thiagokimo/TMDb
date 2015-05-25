@@ -47,7 +47,7 @@ public class MovieImagesPresenter implements BasePresenter {
         TMDb.JOB_MANAGER.addJobInBackground(new GetMovieImagesUseCase(context.getString(R.string.api_key), movieID, new GetMovieImagesUseCase.GetMovieImagesUseCaseCallback() {
             @Override
             public void onImagesUrlsLoaded(List<ImageEntity> backdrops, List<ImageEntity> posters) {
-                view.renderTabs(new ImageMapper("w300").toModels(backdrops), new ImageMapper("w185").toModels(posters));
+                view.renderTabs(new ImageMapper("w780").toModels(backdrops), new ImageMapper("w500").toModels(posters));
                 view.hideLoading();
                 view.showView();
             }
