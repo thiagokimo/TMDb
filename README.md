@@ -4,7 +4,7 @@ Another of those Android REST clients.
 ## TL;DR
 This project is an Android app which displays data from [The Movie Database](https://www.themoviedb.org) API.
 
-Download the apk [here](LINK_TO_APK)
+Download the apk [here](https://github.com/thiagokimo/TMDb/blob/master/app-debug.apk?raw=true)
 
 ## The Mission
 In this assignment I had to provide to users 3 main functionalities:
@@ -59,4 +59,5 @@ The **Retrofit** library was used to do our http calls. The **Priority Job Queue
 
 ## Author
 Thiago Rocha
+
 +553184349266
