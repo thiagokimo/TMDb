@@ -55,7 +55,7 @@ compile 'com.path:android-priority-jobqueue:1.1.2'
 compile 'com.squareup.retrofit:retrofit:1.9.0'
 ```
 
-The **Retrofit** library was used to do http calls. The **Priority Job Queue** was used to wrap all our use cases in a thread-safe environment.
+The **Retrofit** library was used to do http calls. The **Priority Job Queue** was used to wrap all use cases in a thread-safe environment.
 
 ## Notes
 
@@ -63,7 +63,7 @@ The **Retrofit** library was used to do http calls. The **Priority Job Queue** w
 - Since there were different image sizes, I displayed lower-sized images in my recylerviews and bigger or original sizes of images in the detailed screens.
 - To pass data from the domain layer to the presentation layer I used a mapper to filter out all unnecessary information from the server-side that I wasn't going to use in the views.
 
-## Things I could have done
+## Extra things I could have done
 
 - An Image transition from the movie search screen to the movie detail screen.
 - I didn't write tests. If I did I would test my presenters in the presentation layer and my use cases in the domain layer.
