@@ -4,7 +4,7 @@ A simple Android client for The Movie DB in Material Design
 ## TL;DR
 This project is an Android app which displays data from [The Movie Database](https://www.themoviedb.org) API.
 
-Download the apk [here](https://github.com/thiagokimo/TMDb/blob/master/release/app-debug.apk?raw=true)
+[![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=io.kimo.tmdb)
 
 ## Screenshots
 ![Movie Search](https://raw.githubusercontent.com/thiagokimo/TMDb/master/screenshots/movie-search.png)
