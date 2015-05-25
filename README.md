@@ -4,7 +4,7 @@ Another of those Android REST clients.
 ## TL;DR
 This project is an Android app which displays data from [The Movie Database](https://www.themoviedb.org) API.
 
-Download the apk [here](https://github.com/thiagokimo/TMDb/blob/master/app-debug.apk?raw=true)
+Download the apk [here](https://github.com/thiagokimo/TMDb/blob/master/release/app-debug.apk?raw=true)
 
 ## The Mission
 In this assignment I had to provide to users 3 main functionalities:
