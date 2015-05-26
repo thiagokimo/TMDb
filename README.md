@@ -11,7 +11,7 @@ This project is an Android app which displays data from [The Movie Database](htt
 ![Fullscreen Image](https://raw.githubusercontent.com/thiagokimo/TMDb/master/screenshots/fullscreen-image.png)
 
 ## The Mission
-In this assignment I had to provide to users 3 main features:
+In this assignment I had to provide 3 main user features:
 
 - Search for movies
 - See details of a movie
@@ -20,13 +20,13 @@ In this assignment I had to provide to users 3 main features:
 The following section explains how did I organized the architecture of my code.
 
 ## Architecture
-The application is organized using a clean architecture approach, which consists in 2 main layers:
+The application is organized using a clean architecture approach consisting of 2 main layers:
 
 - Presentation (app)
 - Domain
 
 ### Presentation Layer
-All logic related with views were built here. The **Model-View-Presenter** pattern was used keeping all the displaying logic into the *presenters* as so away from the fragments and activities (which were considered only views). The presenters are composed with use-case that perform their tasks on background, outside the UI Thread, and returning the results through a callback into the views.
+The view logic resides here. The **Model-View-Presenter** pattern was used to keep all the presentation logic into  *presenters* and away from the fragments and activities (which were considered only views). The presenters are composed of the use-case that perform their tasks on background, outside the UI Thread, and returning the results through a callback into the views.
 
 Third-party dependencies:
 ```
@@ -42,7 +42,7 @@ compile 'com.pnikosis:materialish-progress:1.5'
 compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') { transitive = true; }
 ```
 
-The **AppCompat** was used let the app UI's look'n feel as much Material Design as possible, with the hold of **CardView**, **Materialish Progress** and **Floating Action Button**. The **RecyclerView** was used to handle all collections displayed in the app. All loaded images from the web were handled with **Picasso**, which let us deal with asynchronous image downloading. Interfaces with tabs were build with **SmartTabLayout**. The fullscreen image were displayed with the **PhotoView** library, which allow users to zoom in/out and move around the image. The **Crashlytics** library where added in order to keep tracks of all non predictable crashes, so that I could avoid figuring out how to reproduce those kinds of bugs.
+The **AppCompat** was used in order to make the app UI's look'n feel as much Material Design as possible, with the hold of **CardView**, **Materialish Progress** and **Floating Action Button**. The **RecyclerView** was used to handle all collections displayed in the app. All images loaded from the web were handled with **Picasso**, which allow us deal with asynchronous image downloading. Interfaces with tabs were build with **SmartTabLayout**. Fullscreen images are displayed with the **PhotoView** library, which allow users to zoom in/out and move around the image. The **Crashlytics** library is used to keep tracks of all non predictable crashes.
 
 ### Domain Layer
 This layer have all business rules. All use-cases implementations, server-side communication and entity objects were implemented here. This layer doesn't know the existence of the presentation layer.
