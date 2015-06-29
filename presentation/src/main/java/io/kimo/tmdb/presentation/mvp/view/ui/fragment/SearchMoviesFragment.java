@@ -42,7 +42,7 @@ public class SearchMoviesFragment extends BaseFragment implements SearchMoviesVi
 
     @Override
     public void instantiatePresenter() {
-        presenter = new SearchMoviesPresenter(getActivity(), this);
+        presenter = new SearchMoviesPresenter(this);
     }
 
     @Override

@@ -1,12 +1,11 @@
 package io.kimo.tmdb.presentation.mvp.presenter;
 
 
-import android.content.Context;
 import android.text.TextUtils;
 
 import java.util.List;
 
-import io.kimo.tmdb.R;
+import io.kimo.tmdb.BuildConfig;
 import io.kimo.tmdb.domain.entity.ConfigurationEntity;
 import io.kimo.tmdb.domain.entity.MovieEntity;
 import io.kimo.tmdb.domain.usecase.GetImageConfigurationUseCase;
@@ -20,13 +19,11 @@ public class SearchMoviesPresenter implements BasePresenter {
 
     private SearchMoviesView view;
     private String apiKey;
-
-
     private String lastQuery = "";
 
-    public SearchMoviesPresenter(Context context, SearchMoviesView view) {
+    public SearchMoviesPresenter(SearchMoviesView view) {
         this.view = view;
-        this.apiKey = context.getString(R.string.api_key);
+        this.apiKey = BuildConfig.TMDB_API_KEY;
     }
 
     @Override

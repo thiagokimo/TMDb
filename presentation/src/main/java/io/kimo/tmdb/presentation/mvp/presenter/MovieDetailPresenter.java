@@ -1,9 +1,8 @@
 package io.kimo.tmdb.presentation.mvp.presenter;
 
-import android.content.Context;
 import android.text.TextUtils;
 
-import io.kimo.tmdb.R;
+import io.kimo.tmdb.BuildConfig;
 import io.kimo.tmdb.domain.entity.MovieDetailEntity;
 import io.kimo.tmdb.domain.usecase.GetMovieDetailUseCase;
 import io.kimo.tmdb.presentation.TMDb;
@@ -18,10 +17,10 @@ public class MovieDetailPresenter implements BasePresenter {
     private MovieModel movieModel;
     private String apiKey;
 
-    public MovieDetailPresenter(MovieDetailView view, MovieModel movieModel, Context context) {
+    public MovieDetailPresenter(MovieDetailView view, MovieModel movieModel) {
         this.view = view;
         this.movieModel = movieModel;
-        this.apiKey = context.getString(R.string.api_key);
+        this.apiKey = BuildConfig.TMDB_API_KEY;
     }
 
     @Override

@@ -62,7 +62,7 @@ public class MovieImagesFragment extends BaseFragment implements MovieImagesView
 
     @Override
     public void instantiatePresenter() {
-        presenter = new MovieImagesPresenter(this, getActivity(), movieID);
+        presenter = new MovieImagesPresenter(this, movieID);
     }
 
     @Override

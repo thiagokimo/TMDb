@@ -25,6 +25,8 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
+        buildConfigField("String", "TMDB_API_KEY", "\"" +TMDB_API_KEY+ "\"")
     }
     buildTypes {
         release {

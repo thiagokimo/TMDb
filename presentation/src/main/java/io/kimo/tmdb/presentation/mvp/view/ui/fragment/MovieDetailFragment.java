@@ -64,7 +64,7 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
 
     @Override
     public void instantiatePresenter() {
-        presenter = new MovieDetailPresenter(this, movieModel, getActivity());
+        presenter = new MovieDetailPresenter(this, movieModel);
     }
 
     @Override

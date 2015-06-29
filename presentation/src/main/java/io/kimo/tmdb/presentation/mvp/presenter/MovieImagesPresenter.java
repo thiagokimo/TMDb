@@ -1,10 +1,8 @@
 package io.kimo.tmdb.presentation.mvp.presenter;
 
-import android.content.Context;
-
 import java.util.List;
 
-import io.kimo.tmdb.R;
+import io.kimo.tmdb.BuildConfig;
 import io.kimo.tmdb.domain.entity.ImageEntity;
 import io.kimo.tmdb.domain.usecase.GetMovieImagesUseCase;
 import io.kimo.tmdb.presentation.TMDb;
@@ -14,14 +12,12 @@ import io.kimo.tmdb.presentation.mvp.view.MovieImagesView;
 
 public class MovieImagesPresenter implements BasePresenter {
 
-    private Context context;
     private MovieImagesView view;
     private int movieID;
 
-    public MovieImagesPresenter(MovieImagesView view, Context context, int movieID) {
+    public MovieImagesPresenter(MovieImagesView view, int movieID) {
         this.movieID = movieID;
         this.view = view;
-        this.context = context;
     }
 
     @Override
@@ -44,7 +40,7 @@ public class MovieImagesPresenter implements BasePresenter {
     }
 
     private void downloadMovieImages() {
-        TMDb.JOB_MANAGER.addJobInBackground(new GetMovieImagesUseCase(context.getString(R.string.api_key), movieID, new GetMovieImagesUseCase.GetMovieImagesUseCaseCallback() {
+        TMDb.JOB_MANAGER.addJobInBackground(new GetMovieImagesUseCase(BuildConfig.TMDB_API_KEY, movieID, new GetMovieImagesUseCase.GetMovieImagesUseCaseCallback() {
             @Override
             public void onImagesUrlsLoaded(List<ImageEntity> backdrops, List<ImageEntity> posters) {
                 view.renderTabs(new ImageMapper("w780").toModels(backdrops), new ImageMapper("w500").toModels(posters));
