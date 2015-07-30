@@ -1,4 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.adapter;
+package io.kimo.tmdb.presentation.ui.adapter;
 
 
 import android.content.Context;
@@ -15,7 +15,7 @@ import java.util.List;
 import io.kimo.tmdb.R;
 import io.kimo.tmdb.presentation.TMDb;
 import io.kimo.tmdb.presentation.mvp.model.ImageModel;
-import io.kimo.tmdb.presentation.mvp.view.ui.activity.ImageActivity;
+import io.kimo.tmdb.presentation.ui.activity.ImageActivity;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder>{
 

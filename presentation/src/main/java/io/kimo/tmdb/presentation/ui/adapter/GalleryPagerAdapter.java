@@ -1,4 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.adapter;
+package io.kimo.tmdb.presentation.ui.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.kimo.tmdb.presentation.mvp.model.ImageModel;
-import io.kimo.tmdb.presentation.mvp.view.ui.fragment.GalleryFragment;
+import io.kimo.tmdb.presentation.ui.fragment.GalleryFragment;
 
 public class GalleryPagerAdapter extends FragmentStatePagerAdapter {
 

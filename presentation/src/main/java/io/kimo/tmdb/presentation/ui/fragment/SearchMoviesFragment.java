@@ -1,4 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.fragment;
+package io.kimo.tmdb.presentation.ui.fragment;
 
 import android.os.Handler;
 import android.os.Message;
@@ -13,7 +13,7 @@ import io.kimo.tmdb.R;
 import io.kimo.tmdb.presentation.mvp.model.MovieModel;
 import io.kimo.tmdb.presentation.mvp.presenter.SearchMoviesPresenter;
 import io.kimo.tmdb.presentation.mvp.view.SearchMoviesView;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseFragment;
+import io.kimo.tmdb.presentation.ui.BaseFragment;
 
 public class SearchMoviesFragment extends BaseFragment implements SearchMoviesView {
 

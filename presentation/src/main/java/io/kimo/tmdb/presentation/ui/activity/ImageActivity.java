@@ -1,4 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.activity;
+package io.kimo.tmdb.presentation.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import io.kimo.tmdb.R;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseActivity;
-import io.kimo.tmdb.presentation.mvp.view.ui.fragment.LoadingImageFragment;
+import io.kimo.tmdb.presentation.ui.BaseActivity;
+import io.kimo.tmdb.presentation.ui.fragment.LoadingImageFragment;
 
 public class ImageActivity extends BaseActivity {
 

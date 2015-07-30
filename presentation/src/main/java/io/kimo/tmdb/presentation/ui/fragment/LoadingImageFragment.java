@@ -1,4 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.fragment;
+package io.kimo.tmdb.presentation.ui.fragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +14,7 @@ import io.kimo.tmdb.presentation.TMDb;
 import io.kimo.tmdb.presentation.Utils;
 import io.kimo.tmdb.presentation.mvp.presenter.LoadingImagePresenter;
 import io.kimo.tmdb.presentation.mvp.view.LoadingImageView;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseFragment;
+import io.kimo.tmdb.presentation.ui.BaseFragment;
 
 public class LoadingImageFragment extends BaseFragment implements LoadingImageView {
 

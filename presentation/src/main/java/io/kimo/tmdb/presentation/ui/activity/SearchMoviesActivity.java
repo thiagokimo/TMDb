@@ -1,12 +1,12 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.activity;
+package io.kimo.tmdb.presentation.ui.activity;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import io.kimo.tmdb.R;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseActivity;
-import io.kimo.tmdb.presentation.mvp.view.ui.fragment.SearchMoviesFragment;
+import io.kimo.tmdb.presentation.ui.BaseActivity;
+import io.kimo.tmdb.presentation.ui.fragment.SearchMoviesFragment;
 
 public class SearchMoviesActivity extends BaseActivity{
 

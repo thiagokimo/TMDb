@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import io.kimo.tmdb.R;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseActivity;
+import io.kimo.tmdb.presentation.ui.BaseActivity;
 
 public class Utils {
 

@@ -1,4 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.fragment;
+package io.kimo.tmdb.presentation.ui.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,9 +21,9 @@ import io.kimo.tmdb.presentation.mapper.MovieMapper;
 import io.kimo.tmdb.presentation.mvp.model.MovieModel;
 import io.kimo.tmdb.presentation.mvp.presenter.MovieDetailPresenter;
 import io.kimo.tmdb.presentation.mvp.view.MovieDetailView;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseActivity;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseFragment;
-import io.kimo.tmdb.presentation.mvp.view.ui.activity.MovieImagesActivity;
+import io.kimo.tmdb.presentation.ui.BaseActivity;
+import io.kimo.tmdb.presentation.ui.BaseFragment;
+import io.kimo.tmdb.presentation.ui.activity.MovieImagesActivity;
 
 public class MovieDetailFragment extends BaseFragment implements MovieDetailView {
 

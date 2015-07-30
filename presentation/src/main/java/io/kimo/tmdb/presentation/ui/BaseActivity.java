@@ -1,4 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui;
+package io.kimo.tmdb.presentation.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -1,5 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.fragment;
-
+package io.kimo.tmdb.presentation.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,34 +12,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.kimo.tmdb.R;
-import io.kimo.tmdb.presentation.mapper.MovieMapper;
-import io.kimo.tmdb.presentation.mvp.model.MovieModel;
-import io.kimo.tmdb.presentation.mvp.presenter.MovieListPresenter;
-import io.kimo.tmdb.presentation.mvp.view.MovieListView;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseFragment;
-import io.kimo.tmdb.presentation.mvp.view.ui.adapter.MoviesAdapter;
+import io.kimo.tmdb.presentation.mapper.ImageMapper;
+import io.kimo.tmdb.presentation.mvp.model.ImageModel;
+import io.kimo.tmdb.presentation.mvp.presenter.GalleryPresenter;
+import io.kimo.tmdb.presentation.mvp.view.GalleryView;
+import io.kimo.tmdb.presentation.ui.BaseFragment;
+import io.kimo.tmdb.presentation.ui.adapter.ImageAdapter;
 
-public class MovieListFragment extends BaseFragment implements MovieListView {
+public class GalleryFragment extends BaseFragment implements GalleryView {
 
-    public static final String TAG = MovieListFragment.class.getSimpleName();
-    public static final String MOVIES = TAG + ".MOVIES";
+    public static final String TAG = GalleryFragment.class.getSimpleName();
+    public static final String IMAGES = TAG + ".IMAGES";
 
     private RecyclerView recyclerView;
     private View loadingView, retryView, emptyView;
-    private TextView retryMsg, emptyMsg;
+    private TextView retryMessage, emptyMessage;
     private Button retryButton;
 
-    private MoviesAdapter adapter;
-    private MovieListPresenter presenter;
+    private ImageAdapter adapter;
 
-    private List<MovieModel> movies;
+    private GalleryPresenter presenter;
 
-    public static MovieListFragment newInstance(List<MovieModel> movies) {
+    private List<ImageModel> urls;
 
-        MovieListFragment fragment = new MovieListFragment();
+    public static GalleryFragment newInstance(List<ImageModel> urls) {
+        GalleryFragment fragment = new GalleryFragment();
 
         Bundle args = new Bundle();
-        args.putStringArrayList(MOVIES, (ArrayList<String>) new MovieMapper().serializeModels(movies));
+        args.putStringArrayList(IMAGES, (ArrayList<String>) new ImageMapper("").serializeModels(urls));
 
         fragment.setArguments(args);
 
@@ -53,7 +52,7 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
         Bundle args = getArguments();
 
         if(args != null) {
-            movies = new MovieMapper().deserializeModels(args.getStringArrayList(MOVIES));
+            urls = new ImageMapper("").deserializeModels(args.getStringArrayList(IMAGES));
         }
 
         super.onCreate(savedInstanceState);
@@ -61,7 +60,7 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
 
     @Override
     public void instantiatePresenter() {
-        presenter = new MovieListPresenter(this, movies);
+        presenter = new GalleryPresenter(this, urls);
     }
 
     @Override
@@ -82,47 +81,38 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
     @Override
     public void mapGUI(View view) {
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
-
         loadingView = view.findViewById(R.id.view_loading);
         emptyView = view.findViewById(R.id.view_empty);
+        emptyMessage = (TextView) emptyView.findViewById(R.id.text);
         retryView = view.findViewById(R.id.view_retry);
-
-        emptyMsg = (TextView) emptyView.findViewById(R.id.text);
-        retryMsg = (TextView) retryView.findViewById(R.id.text);
-
+        retryMessage = (TextView) retryView.findViewById(R.id.text);
         retryButton = (Button) retryView.findViewById(R.id.button);
     }
 
     @Override
     public void configureGUI() {
-
-        //RECYLCER VIEW CONFIGURATIONS
-        adapter = new MoviesAdapter(getActivity());
-        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        recyclerView.setAdapter(adapter);
-        //RECYLCER VIEW CONFIGURATIONS
-
-
-        //RETRY BUTTON CONFIGURATIONS
         retryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.createView();
             }
         });
-        //RETRY BUTTON CONFIGURATIONS
 
+        //RECYCLER CONFIGURATIONS
+        adapter = new ImageAdapter(getActivity());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setAdapter(adapter);
+        //RECYCLER CONFIGURATIONS
     }
 
     @Override
-    public void renderMovies(List<MovieModel> movies) {
-        adapter.setData(movies);
+    public void renderImages(List<ImageModel> images) {
+        adapter.setData(urls);
     }
 
     @Override
-    public void clearMovies() {
+    public void clearImages() {
         adapter.clearData();
     }
 
@@ -138,7 +128,7 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
 
     @Override
     public void showRetry(String msg) {
-        retryMsg.setText(msg);
+        retryMessage.setText(msg);
         retryView.setVisibility(View.VISIBLE);
     }
 
@@ -149,7 +139,7 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
 
     @Override
     public void showEmpty(String msg) {
-        emptyMsg.setText(msg);
+        emptyMessage.setText(msg);
         emptyView.setVisibility(View.VISIBLE);
     }
 

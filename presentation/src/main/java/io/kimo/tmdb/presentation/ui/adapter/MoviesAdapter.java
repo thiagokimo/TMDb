@@ -1,4 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.adapter;
+package io.kimo.tmdb.presentation.ui.adapter;
 
 import android.content.Context;
 import android.os.Handler;
@@ -16,7 +16,7 @@ import java.util.List;
 import io.kimo.tmdb.R;
 import io.kimo.tmdb.presentation.TMDb;
 import io.kimo.tmdb.presentation.mvp.model.MovieModel;
-import io.kimo.tmdb.presentation.mvp.view.ui.activity.MovieDetailActivity;
+import io.kimo.tmdb.presentation.ui.activity.MovieDetailActivity;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
 

@@ -1,4 +1,4 @@
-package io.kimo.tmdb.presentation.mvp.view.ui.fragment;
+package io.kimo.tmdb.presentation.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -16,9 +16,9 @@ import io.kimo.tmdb.presentation.Utils;
 import io.kimo.tmdb.presentation.mvp.model.ImageModel;
 import io.kimo.tmdb.presentation.mvp.presenter.MovieImagesPresenter;
 import io.kimo.tmdb.presentation.mvp.view.MovieImagesView;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseActivity;
-import io.kimo.tmdb.presentation.mvp.view.ui.BaseFragment;
-import io.kimo.tmdb.presentation.mvp.view.ui.adapter.GalleryPagerAdapter;
+import io.kimo.tmdb.presentation.ui.BaseActivity;
+import io.kimo.tmdb.presentation.ui.BaseFragment;
+import io.kimo.tmdb.presentation.ui.adapter.GalleryPagerAdapter;
 
 public class MovieImagesFragment extends BaseFragment implements MovieImagesView {
 
